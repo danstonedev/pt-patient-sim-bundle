@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "patient_id": "P-0011",
+    "version": "v1.0-sport-ortho",
+    "seed": 28574011
+  },
+  "identity": {
+    "legal_name": "Olena Kovalenko",
+    "preferred_name": "Olena",
+    "age": 45,
+    "sex_at_birth": "F",
+    "gender_identity": "Woman",
+    "race_ethnicity": [
+      "White",
+      "Ukrainian"
+    ],
+    "language": "uk",
+    "interpreter_needed": true,
+    "pronouns": "she/her"
+  },
+  "context": {
+    "city": "Fargo, ND",
+    "rural_urban": "urban",
+    "coverage": {
+      "payer_type": "Medicaid",
+      "plan": "ND Medicaid (pending)"
+    },
+    "occupation_physical_demands": "light",
+    "work_status": NaN,
+    "sport_participation": "walking group",
+    "physical_activity_min_per_week": 90
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [
+      "trauma-informed"
+    ],
+    "learning_style": NaN,
+    "interpreter_prompt": "Requests interpreter for uk before continuing."
+  },
+  "chief_complaint": "Neck tightness with computer work; worse by end of day; no arm symptoms.",
+  "condition": "Mechanical neck pain",
+  "hpi": {
+    "onset": NaN,
+    "mechanism": NaN,
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "limited",
+    "housing": "unstable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "forward head/rounded shoulders",
+    "arom": {
+      "rotation": "limited right>left",
+      "sidebend": "limited"
+    },
+    "special_tests": {
+      "Spurling": "negative",
+      "FlexionRotationTest": "limited/painful"
+    },
+    "neurovascular": "intact"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

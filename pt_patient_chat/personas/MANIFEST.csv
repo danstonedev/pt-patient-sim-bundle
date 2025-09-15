@@ -1,0 +1,16 @@
+patient_id,preferred_name,age,language,interpreter_needed,condition,chief_complaint
+P-0001,Jack,69,en,False,Hip contusion / greater trochanteric pain,Right lateral hip soreness after a ground‑level fall on ice 2025‑01‑28; pain with lying on the side.
+P-0002,Amina,27,so,True,Lateral ankle sprain (grade I–II),Right lateral ankle pain after inversion during soccer on 2025‑08‑23; swelling and difficulty cutting.
+P-0003,Robert,42,en,False,Acute rotator cuff strain (work‑related),Right shoulder pain after overhead bale lift at work on 2025‑08‑01; trouble with overhead reach.
+P-0004,Liam,10,en,False,Osgood–Schlatter disease (traction apophysitis),Anterior knee pain during/after soccer practice the past 2 weeks; worse with running and stairs.
+P-0005,María,34,es,True,Pregnancy‑related pelvic girdle pain,"Second‑trimester pelvic girdle discomfort, worse with rolling, stairs, and prolonged sitting."
+P-0006,Dorothy,73,en,False,Shoulder impingement/tendinopathy,Gradual onset shoulder pain with reaching overhead and dressing; swims in water aerobics.
+P-0007,Caleb,52,en,False,Acute rotator cuff strain (work‑related),Right shoulder pain after overhead bale lift at work on 2025‑08‑01; trouble with overhead reach.
+P-0008,Hannah,29,en,False,Postpartum pelvic girdle pain (sacroiliac region),"Pelvic/low‑back ache 8 weeks postpartum; worse with rolling in bed, carrying car seat, and prolonged standing."
+P-0009,Taylor,19,en,False,Patellofemoral pain syndrome,"Anterior knee pain with stairs, squatting, and prolonged sitting; active with intramural sports."
+P-0010,Ethan,8,en,False,Anterior knee pain related to activity (pediatric),Front of knee pain during adaptive PE and longer walks; no trauma.
+P-0011,Olena,45,uk,True,Mechanical neck pain,Neck tightness with computer work; worse by end of day; no arm symptoms.
+P-0012,Thomas,67,en,False,Knee osteoarthritis flare,"Intermittent right knee ache and stiffness, worse with prolonged walking; morning stiffness < 30 min."
+P-0013,Faduma,38,so,True,Nonspecific low back pain,Low back ache from childcare and part‑time work; worse with bending/lifting; no leg symptoms.
+P-0014,Brandon,28,en,False,Cervical strain/whiplash (WAD I–II),"Neck pain and stiffness after a rear‑end collision on 2025‑07‑22. No headaches, no paresthesias."
+P-0015,Kim,61,en,False,Rotator cuff tendinopathy/impingement,Gradual right shoulder pain with pickleball serves/overheads; sleeping on that side hurts.

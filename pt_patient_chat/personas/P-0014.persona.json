@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "patient_id": "P-0014",
+    "version": "v1.0-sport-ortho",
+    "seed": 51041549
+  },
+  "identity": {
+    "legal_name": "Brandon Ortiz",
+    "preferred_name": "Brandon",
+    "age": 28,
+    "sex_at_birth": "M",
+    "gender_identity": "Man",
+    "race_ethnicity": [
+      "Hispanic/Latino"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "he/him"
+  },
+  "context": {
+    "city": "Williston, ND",
+    "rural_urban": "urban",
+    "coverage": {
+      "payer_type": "commercial",
+      "plan": "Cigna PPO"
+    },
+    "occupation_physical_demands": "very heavy",
+    "work_status": "restricted",
+    "sport_participation": "none",
+    "physical_activity_min_per_week": 90
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [],
+    "learning_style": NaN
+  },
+  "chief_complaint": "Neck pain and stiffness after a rear‑end collision on 2025‑07‑22. No headaches, no paresthesias.",
+  "condition": "Cervical strain/whiplash (WAD I–II)",
+  "hpi": {
+    "onset": "2025-07-22",
+    "mechanism": "MVA rear-end—whiplash",
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "guarded posture; tenderness upper traps and paraspinals",
+    "arom": {
+      "flexion": "limited/painful",
+      "extension": "limited/painful",
+      "rotation": "limited, symmetric"
+    },
+    "special_tests": {
+      "Spurling": "negative",
+      "Distraction": "relieves pain",
+      "AlarLigaments": "negative"
+    },
+    "neurovascular": "intact; no UE symptoms"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

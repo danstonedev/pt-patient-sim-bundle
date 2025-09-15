@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "patient_id": "P-0008",
+    "version": "v1.0-sport-ortho",
+    "seed": 26655298
+  },
+  "identity": {
+    "legal_name": "Hannah Nguyen",
+    "preferred_name": "Hannah",
+    "age": 29,
+    "sex_at_birth": "F",
+    "gender_identity": "Woman",
+    "race_ethnicity": [
+      "Asian",
+      "Vietnamese"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "she/her"
+  },
+  "context": {
+    "city": "Fargo, ND",
+    "rural_urban": "urban",
+    "coverage": {
+      "payer_type": "commercial",
+      "plan": "BCBS ND PPO"
+    },
+    "occupation_physical_demands": "sedentary",
+    "work_status": "restricted",
+    "sport_participation": "yoga (postpartum)",
+    "physical_activity_min_per_week": 90
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [
+      "trauma-informed"
+    ],
+    "learning_style": NaN
+  },
+  "chief_complaint": "Pelvic/low‑back ache 8 weeks postpartum; worse with rolling in bed, carrying car seat, and prolonged standing.",
+  "condition": "Postpartum pelvic girdle pain (sacroiliac region)",
+  "hpi": {
+    "onset": NaN,
+    "mechanism": NaN,
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "non‑antalgic gait; tenderness over SIJ",
+    "arom": {
+      "lumbarFlexion": "stiff/painful end‑range",
+      "lumbarExtension": "near full"
+    },
+    "special_tests": {
+      "ASLR": "positive (effortful)",
+      "ThighThrust": "painful",
+      "FABER": "mildly painful"
+    },
+    "neurovascular": "intact; no saddle or neuro symptoms"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

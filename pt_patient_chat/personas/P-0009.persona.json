@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "patient_id": "P-0009",
+    "version": "v1.0-sport-ortho",
+    "seed": 97251160
+  },
+  "identity": {
+    "legal_name": "Taylor Brooks",
+    "preferred_name": "Taylor",
+    "age": 19,
+    "sex_at_birth": "X",
+    "gender_identity": "Non-binary",
+    "race_ethnicity": [
+      "White"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "they/them"
+  },
+  "context": {
+    "city": "Grand Forks, ND",
+    "rural_urban": "urban",
+    "coverage": {
+      "payer_type": "commercial",
+      "plan": "Student Health Plan (UND)"
+    },
+    "occupation_physical_demands": "light",
+    "work_status": NaN,
+    "sport_participation": "intramural ultimate frisbee",
+    "physical_activity_min_per_week": 200
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [],
+    "learning_style": NaN
+  },
+  "chief_complaint": "Anterior knee pain with stairs, squatting, and prolonged sitting; active with intramural sports.",
+  "condition": "Patellofemoral pain syndrome",
+  "hpi": {
+    "onset": NaN,
+    "mechanism": NaN,
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "dynamic valgus on step‑down",
+    "arom": {
+      "kneeFlexion": "near full; painful at deep flexion"
+    },
+    "special_tests": {
+      "Clarks": "painful",
+      "StepDownTest": "positive",
+      "NobleCompression": "negative"
+    },
+    "neurovascular": "intact; hip abd 4-/5"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

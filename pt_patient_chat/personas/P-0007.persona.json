@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "patient_id": "P-0007",
+    "version": "v1.0-sport-ortho",
+    "seed": 86617245
+  },
+  "identity": {
+    "legal_name": "Caleb Johnson",
+    "preferred_name": "Caleb",
+    "age": 52,
+    "sex_at_birth": "M",
+    "gender_identity": "Man",
+    "race_ethnicity": [
+      "White"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "he/him"
+  },
+  "context": {
+    "city": "Minot, ND",
+    "rural_urban": "urban",
+    "coverage": {
+      "payer_type": "Workers’ Comp",
+      "plan": "ND WSI"
+    },
+    "occupation_physical_demands": "heavy",
+    "work_status": "off work",
+    "sport_participation": "recreational hockey (defense)",
+    "physical_activity_min_per_week": 120
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [],
+    "learning_style": NaN
+  },
+  "chief_complaint": "Right shoulder pain after overhead bale lift at work on 2025‑08‑01; trouble with overhead reach.",
+  "condition": "Acute rotator cuff strain (work‑related)",
+  "hpi": {
+    "onset": "2025-08-01",
+    "mechanism": "overhead bale lift—acute R shoulder",
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "protective posture; no deformity",
+    "arom": {
+      "abduction": "limited/painful arc",
+      "flexion": "limited/painful"
+    },
+    "special_tests": {
+      "EmptyCan": "pain + mild weakness",
+      "ExternalRotationResistance": "painful",
+      "DropArm": "negative"
+    },
+    "neurovascular": "intact"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

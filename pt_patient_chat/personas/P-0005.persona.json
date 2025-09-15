@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "patient_id": "P-0005",
+    "version": "v1.0-sport-ortho",
+    "seed": 42405452
+  },
+  "identity": {
+    "legal_name": "María Delgado",
+    "preferred_name": "María",
+    "age": 34,
+    "sex_at_birth": "F",
+    "gender_identity": "Woman",
+    "race_ethnicity": [
+      "Hispanic/Latina"
+    ],
+    "language": "es",
+    "interpreter_needed": true,
+    "pronouns": "she/her"
+  },
+  "context": {
+    "city": "Bismarck, ND",
+    "rural_urban": "urban",
+    "coverage": {
+      "payer_type": "commercial",
+      "plan": "BCBS ND PPO"
+    },
+    "occupation_physical_demands": "sedentary",
+    "work_status": "full duty",
+    "sport_participation": "none",
+    "physical_activity_min_per_week": 150
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [
+      "trauma-informed",
+      "clear teach-back"
+    ],
+    "learning_style": "read",
+    "interpreter_prompt": "Requests interpreter for es before continuing."
+  },
+  "chief_complaint": "Second‑trimester pelvic girdle discomfort, worse with rolling, stairs, and prolonged sitting.",
+  "condition": "Pregnancy‑related pelvic girdle pain",
+  "hpi": {
+    "onset": NaN,
+    "mechanism": NaN,
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "non‑antalgic gait",
+    "arom": {
+      "lumbarFlexion": "stiff",
+      "lumbarExtension": "tolerable"
+    },
+    "special_tests": {
+      "ASLR": "effortful",
+      "P4/ThighThrust": "mildly painful",
+      "Compression": "discomfort"
+    },
+    "neurovascular": "intact"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

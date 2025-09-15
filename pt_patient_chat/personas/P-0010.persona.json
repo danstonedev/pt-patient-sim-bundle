@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "patient_id": "P-0010",
+    "version": "v1.0-sport-ortho",
+    "seed": 38001350
+  },
+  "identity": {
+    "legal_name": "Ethan Miller",
+    "preferred_name": "Ethan",
+    "age": 8,
+    "sex_at_birth": "M",
+    "gender_identity": "Boy",
+    "race_ethnicity": [
+      "White"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "he/him"
+  },
+  "context": {
+    "city": "Jamestown, ND",
+    "rural_urban": "rural",
+    "coverage": {
+      "payer_type": "Medicaid",
+      "plan": "ND Medicaid"
+    },
+    "occupation_physical_demands": "light",
+    "work_status": NaN,
+    "sport_participation": "adaptive PE",
+    "physical_activity_min_per_week": 180
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [],
+    "learning_style": NaN
+  },
+  "chief_complaint": "Front of knee pain during adaptive PE and longer walks; no trauma.",
+  "condition": "Anterior knee pain related to activity (pediatric)",
+  "hpi": {
+    "onset": NaN,
+    "mechanism": NaN,
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "tender patellar tendon/tibial tubercle region",
+    "arom": {
+      "kneeFlexion": "near full; mild pain",
+      "kneeExtension": "full"
+    },
+    "special_tests": {
+      "ResistedKneeExtension": "painful",
+      "LigamentTesting": "stable"
+    },
+    "neurovascular": "intact"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

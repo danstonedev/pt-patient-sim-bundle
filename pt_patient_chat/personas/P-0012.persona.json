@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "patient_id": "P-0012",
+    "version": "v1.0-sport-ortho",
+    "seed": 75128601
+  },
+  "identity": {
+    "legal_name": "Thomas White Eagle",
+    "preferred_name": "Thomas",
+    "age": 67,
+    "sex_at_birth": "M",
+    "gender_identity": "Man",
+    "race_ethnicity": [
+      "Native American (Standing Rock)"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "he/him"
+  },
+  "context": {
+    "city": "Fort Yates, ND",
+    "rural_urban": "rural",
+    "coverage": {
+      "payer_type": "IHS",
+      "plan": "Indian Health Service"
+    },
+    "occupation_physical_demands": "medium",
+    "work_status": NaN,
+    "sport_participation": "none",
+    "physical_activity_min_per_week": 75
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [],
+    "learning_style": NaN
+  },
+  "chief_complaint": "Intermittent right knee ache and stiffness, worse with prolonged walking; morning stiffness < 30 min.",
+  "condition": "Knee osteoarthritis flare",
+  "hpi": {
+    "onset": NaN,
+    "mechanism": NaN,
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "mild varus alignment; crepitus with motion",
+    "arom": {
+      "kneeFlexion": "limited/painful end‑range",
+      "kneeExtension": "near full"
+    },
+    "special_tests": {
+      "PatellofemoralCompression": "crepitus/discomfort",
+      "LigamentTesting": "stable"
+    },
+    "neurovascular": "intact"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

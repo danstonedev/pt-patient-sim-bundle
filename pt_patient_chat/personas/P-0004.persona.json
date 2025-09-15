@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "patient_id": "P-0004",
+    "version": "v1.0-sport-ortho",
+    "seed": 80557142
+  },
+  "identity": {
+    "legal_name": "Liam Torres",
+    "preferred_name": "Liam",
+    "age": 10,
+    "sex_at_birth": "M",
+    "gender_identity": "Boy",
+    "race_ethnicity": [
+      "Hispanic/Latino"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "he/him"
+  },
+  "context": {
+    "city": "Grand Forks, ND",
+    "rural_urban": "urban",
+    "coverage": {
+      "payer_type": "VA/Tricare",
+      "plan": "TRICARE Select"
+    },
+    "occupation_physical_demands": "light",
+    "work_status": NaN,
+    "sport_participation": "youth soccer (defender);in-season",
+    "physical_activity_min_per_week": 300
+  },
+  "communication_profile": {
+    "health_literacy": NaN,
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [],
+    "learning_style": "demo"
+  },
+  "chief_complaint": "Anterior knee pain during/after soccer practice the past 2 weeks; worse with running and stairs.",
+  "condition": "Osgood–Schlatter disease (traction apophysitis)",
+  "hpi": {
+    "onset": "2025-09-01",
+    "mechanism": "overuse-related anterior knee pain (suspected Osgood–Schlatter)",
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "localized tenderness at tibial tubercle; mild swelling",
+    "arom": {
+      "kneeFlexion": "near full; painful end‑range",
+      "kneeExtension": "near full"
+    },
+    "special_tests": {
+      "ResistedKneeExtension": "painful",
+      "McMurray": "negative",
+      "Lachman": "negative"
+    },
+    "neurovascular": "intact"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "patient_id": "P-0003",
+    "version": "v1.0-sport-ortho",
+    "seed": 88818937
+  },
+  "identity": {
+    "legal_name": "Robert Two Bears",
+    "preferred_name": "Robert",
+    "age": 42,
+    "sex_at_birth": "M",
+    "gender_identity": "Man",
+    "race_ethnicity": [
+      "Native American (Turtle Mountain Chippewa)"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "he/him"
+  },
+  "context": {
+    "city": "Belcourt, ND",
+    "rural_urban": "rural",
+    "coverage": {
+      "payer_type": "Workers’ Comp",
+      "plan": "ND Workforce Safety & Insurance (WSI)"
+    },
+    "occupation_physical_demands": "heavy",
+    "work_status": "off work",
+    "sport_participation": "none",
+    "physical_activity_min_per_week": 60
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [],
+    "learning_style": "read"
+  },
+  "chief_complaint": "Right shoulder pain after overhead bale lift at work on 2025‑08‑01; trouble with overhead reach.",
+  "condition": "Acute rotator cuff strain (work‑related)",
+  "hpi": {
+    "onset": "2025-07-10",
+    "mechanism": "lifting 80-lb pipe at work;acute low back pain",
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "protective posture; no deformity",
+    "arom": {
+      "abduction": "limited/painful arc",
+      "flexion": "limited/painful"
+    },
+    "special_tests": {
+      "EmptyCan": "pain + mild weakness",
+      "ExternalRotationResistance": "painful",
+      "DropArm": "negative"
+    },
+    "neurovascular": "intact"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "patient_id": "P-0001",
+    "version": "v1.0-sport-ortho",
+    "seed": 64882141
+  },
+  "identity": {
+    "legal_name": "John Peterson",
+    "preferred_name": "Jack",
+    "age": 69,
+    "sex_at_birth": "M",
+    "gender_identity": "Man",
+    "race_ethnicity": [
+      "White"
+    ],
+    "language": "en",
+    "interpreter_needed": false,
+    "pronouns": "he/him"
+  },
+  "context": {
+    "city": "Rugby, ND",
+    "rural_urban": "rural",
+    "coverage": {
+      "payer_type": "Medicare",
+      "plan": "Medicare Part B"
+    },
+    "occupation_physical_demands": "light",
+    "work_status": NaN,
+    "sport_participation": "none",
+    "physical_activity_min_per_week": 90
+  },
+  "communication_profile": {
+    "health_literacy": "avg",
+    "talkativeness": "medium",
+    "tone": "polite, concise",
+    "preferences": [
+      "no preference"
+    ],
+    "learning_style": "teach-back"
+  },
+  "chief_complaint": "Right lateral hip soreness after a ground‑level fall on ice 2025‑01‑28; pain with lying on the side.",
+  "condition": "Hip contusion / greater trochanteric pain",
+  "hpi": {
+    "onset": "2025-01-28",
+    "mechanism": "fall on ice",
+    "location": "region consistent with condition",
+    "severity_nrs": 5,
+    "aggravators": [
+      "stairs",
+      "squatting",
+      "bending",
+      "overhead reach",
+      "running"
+    ],
+    "easers": [
+      "rest",
+      "ice/heat",
+      "brace or support"
+    ],
+    "24h_pattern": "stiff in morning; worse with activity; eases with rest",
+    "red_flags": []
+  },
+  "pmh_psh_meds_allergies": {
+    "pmh": [],
+    "psh": [],
+    "meds": [
+      "OTC analgesic PRN"
+    ],
+    "allergies": [
+      "NKDA"
+    ]
+  },
+  "sdoh": {
+    "transport": "reliable",
+    "housing": "stable",
+    "food": "secure"
+  },
+  "goals": [
+    "Return to normal daily activities without pain",
+    "Resume preferred sport or exercise at previous level"
+  ],
+  "exam_script": {
+    "observation": "mild ecchymosis lateral hip",
+    "arom": {
+      "hipAbduction": "pain‑limited",
+      "hipIR/ER": "near full"
+    },
+    "special_tests": {
+      "Trendelenburg": "positive (pain)",
+      "FABER": "lateral hip pain",
+      "FADIR": "negative"
+    },
+    "neurovascular": "intact; ambulates with cane"
+  },
+  "education_boundaries": {
+    "do_not_provide": [
+      "diagnostic imaging interpretation",
+      "prescription‑only treatments"
+    ],
+    "okay_to_discuss": [
+      "activity modification principles",
+      "general self‑management strategies"
+    ]
+  },
+  "variability_knobs": {
+    "pain_range": [
+      4,
+      6
+    ],
+    "compliance": "med-high",
+    "detail_flux": 0.2,
+    "random_fact": [
+      "slept poorly",
+      "skipped breakfast",
+      "running late"
+    ]
+  }
+}
