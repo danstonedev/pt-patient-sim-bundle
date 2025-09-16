@@ -1,57 +1,88 @@
 
-# PT Simulated Patient Chat (Reference Harness)
+# PT Patient Simulation Chatbot
 
-This mini-project turns your persona JSONs into a talking patient for training.
+A simple, clean LLM-powered chatbot that simulates patient interactions for physical therapy training.
 
-## What you have
-- `engine.py` – core logic: loads persona, detects what the learner asked, applies guardrails, and replies in-patient voice.
-- `rubric.py` – lightweight scoring by conversation tags (onset, mechanism, red flags, etc.).
-- `app.py` – FastAPI microservice exposing `/patients`, `/chat`, `/score`.
-- `run_cli.py` – command-line tester.
-- Personas source: `/mnt/data/personas_sport_ortho_v1`
+## Features
 
-## Quick start (CLI)
-```bash
-python run_cli.py P-0002
-# Tip: if the persona needs an interpreter, say: "An interpreter is present now."
+- **15 Realistic Patient Personas**: Each with unique medical conditions, communication styles, and backgrounds
+- **OpenAI Integration**: Uses GPT-4o-mini for natural, contextual responses
+- **Role-Playing AI**: LLM stays in character as the selected patient
+- **Clean Web Interface**: Simple, modern chat interface
+- **No Complexity**: No scoring, minimal setup, just functional chatbot
+
+## Quick Start
+
+1. **Install Dependencies**:
+   ```powershell
+   .venv\Scripts\python.exe -m pip install -r pt_patient_chat/requirements.txt
+   ```
+
+2. **Configure OpenAI** (create `.env` file or set environment variables):
+   ```
+   PT_USE_OPENAI=1
+   OPENAI_API_KEY=your-openai-api-key-here
+   OPENAI_MODEL=gpt-4o-mini
+   ```
+
+3. **Start the Server**:
+   ```powershell
+   $env:PT_USE_OPENAI='1'
+   $env:OPENAI_API_KEY='your-key-here' 
+   $env:OPENAI_MODEL='gpt-4o-mini'
+   .venv\Scripts\python.exe pt_patient_chat\app.py
+   ```
+
+4. **Open the Web Interface**:
+   Visit: http://127.0.0.1:8001/web/simple_chat.html
+
+## How to Use
+
+1. **Select a Patient**: Choose from the dropdown (e.g., "Jack - Hip contusion")
+2. **Start Chatting**: The AI will respond as that patient based on their persona
+3. **Natural Conversations**: Ask about symptoms, pain, daily activities, etc.
+
+## Example Patients
+
+- **Jack (P-0001)**: 69-year-old with hip pain from ice fall, polite and concise
+- **Various Others**: Different ages, conditions, communication styles, and backgrounds
+
+## File Structure
+
+```
+pt_patient_chat/
+├── app.py                 # Main FastAPI application
+├── llm_adapters.py        # OpenAI and Echo LLM clients
+├── personas/              # Patient persona JSON files
+├── web/
+│   └── simple_chat.html   # Web interface
+├── requirements.txt       # Python dependencies
+└── .env                   # Configuration (create this)
 ```
 
-## API start (if FastAPI is available)
-```bash
-pip install fastapi uvicorn pydantic
-uvicorn app:app --reload
-```
-Then:
-```bash
-curl -s http://127.0.0.1:8000/patients
-curl -s -X POST http://127.0.0.1:8000/chat -H "Content-Type: application/json"   -d '{"patient_id":"P-0002","user_text":"When did this start and how did it happen?","state":{}}'
-```
+## API Endpoints
 
-## Integration notes
-- The engine enforces interpreter flow, declines diagnosis/prescriptions/imaging, and only reveals exam nuggets when asked.
-- Returned `tags` can be accumulated client-side and passed to `/score` at the end to produce a rubric grade.
-- You can swap personas simply by passing a different `patient_id` tied to your JSONs.
-- To use a real LLM instead of rule-based replies, replace `patient_reply` with a prompt-builder that feeds the persona + guardrails to your model, but **keep** the tag extraction for scoring.
+- `GET /health` - Server status and LLM client info
+- `GET /patients` - List all available patients
+- `GET /patients/{id}` - Get specific patient details  
+- `POST /chat` - Send message and get patient response
 
-## License
-For instructional/simulation use. Synthetic data only.
+## Patient Personas
 
+Each patient has:
+- **Identity**: Name, age, pronouns, language
+- **Medical**: Condition, symptoms, pain levels
+- **Communication**: Tone, talkativeness, health literacy
+- **Background**: Location, occupation, lifestyle
 
-## Use OpenAI by default (env flag)
-Set `PT_USE_OPENAI=1` and `OPENAI_API_KEY` (and optionally `OPENAI_MODEL`) before launching the API:
-```bash
-export PT_USE_OPENAI=1
-export OPENAI_API_KEY=sk-...
-export OPENAI_MODEL=gpt-4o-mini
-uvicorn /mnt/data/pt_patient_chat/app_llm:app --reload
-# Check which client is active
-curl -s http://127.0.0.1:8000/health
+The LLM uses this data to respond authentically as that patient would.
+
+## Development
+
+To run without OpenAI (for testing):
+```powershell
+$env:PT_USE_OPENAI='0'
+.venv\Scripts\python.exe pt_patient_chat\app.py
 ```
 
-## Run tests
-```bash
-python /mnt/data/pt_patient_chat/tests/run_tests.py
-```
-
-
-**Note:** Personas are now bundled under `pt_patient_chat/personas/` and all paths are relative.
+This uses an "Echo" client that just repeats your messages for testing the interface.

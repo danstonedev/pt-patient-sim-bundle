@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Patient Chat - Main Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-button.active {
+            background: rgba(255, 255, 255, 0.4);
+            font-weight: bold;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            height: fit-content;
+        }
+
+        .sidebar h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .patient-selector {
+            margin-bottom: 25px;
+        }
+
+        .patient-selector label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .patient-selector select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1em;
+            background: white;
+        }
+
+        .patient-selector select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .patient-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .patient-info h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .patient-info p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+
+        .behavior-controls {
+            border-top: 1px solid #e1e5e9;
+            padding-top: 20px;
+        }
+
+        .behavior-group {
+            margin-bottom: 15px;
+        }
+
+        .behavior-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        .behavior-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e1e5e9;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .chat-container {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+
+        .chat-header h2 {
+            color: #333;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 60vh;
+            min-height: 400px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-bubble {
+            background: #667eea;
+            color: white;
+        }
+
+        .message.patient .message-bubble {
+            background: #f1f3f4;
+            color: #333;
+            border: 1px solid #e1e5e9;
+        }
+
+        .message-sender {
+            font-weight: bold;
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            border-top: 1px solid #e1e5e9;
+            background: #f8f9fa;
+        }
+
+        .chat-input-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 25px;
+            font-size: 1em;
+            resize: none;
+            min-height: 44px;
+            max-height: 120px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .send-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .send-button:hover {
+            background: #5a6fd8;
+            transform: scale(1.05);
+        }
+
+        .send-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .error-message {
+            background: #ffe6e6;
+            border: 1px solid #ff9999;
+            color: #cc0000;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>PT Patient Simulator - Chat Interface</h1>
+        <nav class="nav-buttons">
+            <a href="simple_chat.html" class="nav-button active">Main Chat</a>
+            <a href="behavior_test_simple.html" class="nav-button">Behavior Comparison</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h2>Settings</h2>
+            
+            <div class="patient-selector">
+                <label for="patientSelect">Select Patient:</label>
+                <select id="patientSelect">
+                    <option value="">Loading patients...</option>
+                </select>
+            </div>
+
+            <div id="patientInfo" class="patient-info" style="display: none;">
+                <h3 id="patientName">Patient Name</h3>
+                <p id="patientDetails">Patient details will appear here</p>
+            </div>
+
+            <div class="behavior-controls">
+                <h3>Behavior Settings</h3>
+                
+                <div class="behavior-group">
+                    <label for="cooperationSelect">Cooperation Level:</label>
+                    <select id="cooperationSelect">
+                        <option value="willing">Willing</option>
+                        <option value="resistant">Resistant</option>
+                    </select>
+                </div>
+
+                <div class="behavior-group">
+                    <label for="painSelect">Pain Expression:</label>
+                    <select id="painSelect">
+                        <option value="stoic">Stoic</option>
+                        <option value="normal">Normal</option>
+                        <option value="dramatic">Dramatic</option>
+                    </select>
+                </div>
+
+                <div class="behavior-group">
+                    <label for="talkSelect">Talkativeness:</label>
+                    <select id="talkSelect">
+                        <option value="normal">Normal</option>
+                        <option value="verbose">Verbose</option>
+                    </select>
+                </div>
+            </div>
+        </aside>
+
+        <main class="chat-container">
+            <div class="chat-header">
+                <h2 id="chatTitle">Select a patient to begin</h2>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="loading" id="loadingMessage">
+                    <p>Welcome! Select a patient from the sidebar to begin your conversation.</p>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <form class="chat-input-form" id="chatForm">
+                    <textarea 
+                        id="chatInput" 
+                        class="chat-input" 
+                        placeholder="Type your message to the patient..."
+                        rows="1"
+                        disabled
+                    ></textarea>
+                    <button type="submit" class="send-button" id="sendButton" disabled>
+                        ➤
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let currentPatient = null;
+        let conversationHistory = [];
+
+        // Load patients on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadPatients();
+            setupEventListeners();
+        });
+
+        async function loadPatients() {
+            try {
+                const response = await fetch('/patients');
+                const data = await response.json();
+                const patientSelect = document.getElementById('patientSelect');
+                
+                patientSelect.innerHTML = '<option value="">Choose a patient...</option>';
+                
+                if (data.patients && data.patients.length > 0) {
+                    data.patients.forEach(patient => {
+                        const option = document.createElement('option');
+                        option.value = patient.id;
+                        option.textContent = `${patient.name} - ${patient.condition}`;
+                        patientSelect.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading patients:', error);
+                showError('Failed to load patients. Please refresh the page.');
+            }
+        }
+
+        function setupEventListeners() {
+            const patientSelect = document.getElementById('patientSelect');
+            const chatForm = document.getElementById('chatForm');
+            const chatInput = document.getElementById('chatInput');
+            const behaviorSelects = ['cooperationSelect', 'painSelect', 'talkSelect'];
+
+            // Patient selection
+            patientSelect.addEventListener('change', handlePatientChange);
+
+            // Behavior controls
+            behaviorSelects.forEach(selectId => {
+                document.getElementById(selectId).addEventListener('change', updateBehaviorSettings);
+            });
+
+            // Chat form submission
+            chatForm.addEventListener('submit', handleChatSubmit);
+
+            // Auto-resize textarea
+            chatInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+            });
+
+            // Enter key handling (Shift+Enter for new line, Enter to send)
+            chatInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    if (this.value.trim() && !document.getElementById('sendButton').disabled) {
+                        chatForm.dispatchEvent(new Event('submit'));
+                    }
+                }
+            });
+        }
+
+        async function handlePatientChange() {
+            const patientSelect = document.getElementById('patientSelect');
+            const selectedPatientId = patientSelect.value;
+            
+            if (!selectedPatientId) {
+                resetChatInterface();
+                return;
+            }
+
+            try {
+                const response = await fetch('/patients');
+                const data = await response.json();
+                const patient = data.patients.find(p => p.id === selectedPatientId);
+                
+                if (patient) {
+                    currentPatient = patient;
+                    updatePatientInterface(patient);
+                    resetConversation();
+                    enableChat();
+                }
+            } catch (error) {
+                console.error('Error loading patient details:', error);
+                showError('Failed to load patient details.');
+            }
+        }
+
+        function updatePatientInterface(patient) {
+            document.getElementById('patientName').textContent = patient.name;
+            document.getElementById('patientDetails').innerHTML = `
+                <strong>Condition:</strong> ${patient.condition}<br>
+                <strong>Age:</strong> ${patient.age}<br>
+                <strong>Background:</strong> ${patient.background}
+            `;
+            document.getElementById('patientInfo').style.display = 'block';
+            document.getElementById('chatTitle').textContent = `Chatting with ${patient.name}`;
+        }
+
+        function resetChatInterface() {
+            document.getElementById('patientInfo').style.display = 'none';
+            document.getElementById('chatTitle').textContent = 'Select a patient to begin';
+            disableChat();
+            resetConversation();
+        }
+
+        function enableChat() {
+            document.getElementById('chatInput').disabled = false;
+            document.getElementById('sendButton').disabled = false;
+            document.getElementById('chatInput').placeholder = "Type your message to the patient...";
+        }
+
+        function disableChat() {
+            document.getElementById('chatInput').disabled = true;
+            document.getElementById('sendButton').disabled = true;
+            document.getElementById('chatInput').placeholder = "Select a patient to begin chatting...";
+        }
+
+        function resetConversation() {
+            conversationHistory = [];
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+            
+            if (currentPatient) {
+                addMessage('system', `Ready to chat with ${currentPatient.name}. Start the conversation!`);
+            }
+        }
+
+        async function updateBehaviorSettings() {
+            const cooperation = document.getElementById('cooperationSelect').value;
+            const pain_expression = document.getElementById('painSelect').value;
+            const talkativeness = document.getElementById('talkSelect').value;
+
+            try {
+                await fetch('/behavior', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        cooperation,
+                        pain_expression,
+                        talkativeness
+                    })
+                });
+            } catch (error) {
+                console.error('Error updating behavior settings:', error);
+            }
+        }
+
+        async function handleChatSubmit(e) {
+            e.preventDefault();
+            
+            const chatInput = document.getElementById('chatInput');
+            const message = chatInput.value.trim();
+            
+            if (!message || !currentPatient) return;
+
+            // Add user message to UI
+            addMessage('user', message);
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+
+            // Show loading
+            showLoading(true);
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        patient_id: currentPatient.id,
+                        message: message,
+                        conversation_history: conversationHistory
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // Add patient response to UI
+                addMessage('patient', data.response);
+                
+                // Update conversation history
+                conversationHistory.push(
+                    { role: 'user', content: message },
+                    { role: 'assistant', content: data.response }
+                );
+
+            } catch (error) {
+                console.error('Error sending message:', error);
+                showError('Failed to send message. Please try again.');
+                addMessage('system', 'Error: Unable to get response from patient. Please try again.');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function addMessage(sender, content) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            if (sender === 'system') {
+                messageDiv.innerHTML = `
+                    <div class="message-bubble" style="background: #fff3cd; color: #856404; border: 1px solid #ffeaa7;">
+                        ${content}
+                    </div>
+                `;
+            } else {
+                const senderName = sender === 'user' ? 'You' : currentPatient?.name || 'Patient';
+                messageDiv.innerHTML = `
+                    <div class="message-bubble">
+                        <div class="message-sender">${senderName}</div>
+                        ${content}
+                    </div>
+                `;
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showLoading(show) {
+            const loadingDiv = document.getElementById('loadingMessage');
+            if (!loadingDiv) {
+                console.error('Loading message element not found');
+                return;
+            }
+            if (show) {
+                loadingDiv.textContent = 'Patient is typing...';
+                loadingDiv.style.display = 'block';
+            } else {
+                loadingDiv.style.display = 'none';
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            if (!errorDiv) {
+                console.error('Error message element not found');
+                return;
+            }
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Behavior Comparison</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-button.active {
+            background: rgba(255, 255, 255, 0.4);
+            font-weight: bold;
+        }
+        
+        .comparison-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .comparison-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8em;
+        }
+        
+        .patient-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .patient-selector select {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+            min-width: 200px;
+        }
+        
+        .test-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+        
+        .test-controls input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .test-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .test-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .combination-result {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px;
+            background: #f8f9fa;
+            min-height: 200px;
+        }
+        
+        .combination-header {
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            color: white;
+        }
+        
+        .willing-stoic-normal { background: linear-gradient(135deg, #4caf50, #2e7d32); }
+        .willing-stoic-verbose { background: linear-gradient(135deg, #4caf50, #673ab7); }
+        .willing-normal-normal { background: linear-gradient(135deg, #2196f3, #1976d2); }
+        .willing-normal-verbose { background: linear-gradient(135deg, #2196f3, #673ab7); }
+        .willing-dramatic-normal { background: linear-gradient(135deg, #ff9800, #f57c00); }
+        .willing-dramatic-verbose { background: linear-gradient(135deg, #ff9800, #673ab7); }
+        .resistant-stoic-normal { background: linear-gradient(135deg, #f44336, #2e7d32); }
+        .resistant-stoic-verbose { background: linear-gradient(135deg, #f44336, #673ab7); }
+        .resistant-normal-normal { background: linear-gradient(135deg, #9e9e9e, #616161); }
+        .resistant-normal-verbose { background: linear-gradient(135deg, #9e9e9e, #673ab7); }
+        .resistant-dramatic-normal { background: linear-gradient(135deg, #f44336, #f57c00); }
+        .resistant-dramatic-verbose { background: linear-gradient(135deg, #f44336, #673ab7); }
+        
+        .combination-response {
+            font-size: 0.9em;
+            line-height: 1.4;
+            color: #333;
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            margin-top: 8px;
+            min-height: 120px;
+        }
+        
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        
+        @media (max-width: 1200px) {
+            .comparison-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .comparison-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="nav-buttons">
+            <a href="simple_chat.html" class="nav-button">Main Chat</a>
+            <a href="behavior_test_simple.html" class="nav-button active">Behavior Comparison</a>
+        </div>
+        <h1>🩺 Patient Behavior Comparison</h1>
+        <p>Test all 12 patient behavior combinations simultaneously</p>
+    </div>
+    
+    <div class="comparison-container">
+        <h2>📊 Compare All 12 Combinations</h2>
+        
+        <div class="patient-selector">
+            <select id="patientSelect" title="Select patient for comparison">
+                <option value="">Loading patients...</option>
+            </select>
+        </div>
+        
+        <div class="test-controls">
+            <input type="text" id="testMessage" placeholder="Type a question to test all 12 combinations..." 
+                   onkeypress="if(event.key==='Enter') testAllCombinations()">
+            <button class="test-btn" onclick="testAllCombinations()">
+                Test All 12 Combinations
+            </button>
+        </div>
+        
+        <div class="comparison-grid" id="comparisonGrid">
+            <!-- Grid will be populated with JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        let currentPatients = [];
+        let allCombinations = [
+            {cooperation: 'willing', pain_expression: 'stoic', talkativeness: 'normal'},
+            {cooperation: 'willing', pain_expression: 'stoic', talkativeness: 'verbose'},
+            {cooperation: 'willing', pain_expression: 'normal', talkativeness: 'normal'},
+            {cooperation: 'willing', pain_expression: 'normal', talkativeness: 'verbose'},
+            {cooperation: 'willing', pain_expression: 'dramatic', talkativeness: 'normal'},
+            {cooperation: 'willing', pain_expression: 'dramatic', talkativeness: 'verbose'},
+            {cooperation: 'resistant', pain_expression: 'stoic', talkativeness: 'normal'},
+            {cooperation: 'resistant', pain_expression: 'stoic', talkativeness: 'verbose'},
+            {cooperation: 'resistant', pain_expression: 'normal', talkativeness: 'normal'},
+            {cooperation: 'resistant', pain_expression: 'normal', talkativeness: 'verbose'},
+            {cooperation: 'resistant', pain_expression: 'dramatic', talkativeness: 'normal'},
+            {cooperation: 'resistant', pain_expression: 'dramatic', talkativeness: 'verbose'}
+        ];
+
+        function formatCombinationName(combo) {
+            const cooperation = combo.cooperation === 'willing' ? 'Willing' : 'Resistant';
+            const pain = combo.pain_expression === 'stoic' ? 'Stoic' : 
+                        combo.pain_expression === 'normal' ? 'Normal' : 'Dramatic';
+            const talk = combo.talkativeness === 'normal' ? 'Normal' : 'Verbose';
+            return `${cooperation} + ${pain} + ${talk}`;
+        }
+
+        function getCombinationClass(combo) {
+            return `${combo.cooperation}-${combo.pain_expression}-${combo.talkativeness}`;
+        }
+
+        // Load patients on page load
+        async function loadPatients() {
+            try {
+                const response = await fetch('/patients');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log('Loaded patients:', data); // Debug log
+                
+                // Handle response format: {patients: [...]} or direct array
+                let patientsArray;
+                if (data && Array.isArray(data.patients)) {
+                    patientsArray = data.patients;
+                } else if (Array.isArray(data)) {
+                    patientsArray = data;
+                } else {
+                    console.error('Expected patients data, got:', data);
+                    patientsArray = [];
+                }
+                
+                currentPatients = patientsArray;
+                
+                const select = document.getElementById('patientSelect');
+                select.innerHTML = '<option value="">Select a patient...</option>';
+                
+                if (currentPatients.length === 0) {
+                    select.innerHTML = '<option value="">No patients available</option>';
+                    return;
+                }
+                
+                currentPatients.forEach(patient => {
+                    const option = document.createElement('option');
+                    option.value = patient.patient_id || patient.id;
+                    option.textContent = `${patient.preferred_name || patient.name} - ${patient.condition || patient.chief_complaint}`;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading patients:', error);
+                const select = document.getElementById('patientSelect');
+                select.innerHTML = '<option value="">Error loading patients</option>';
+            }
+        }
+
+        // Initialize comparison grid
+        function initializeComparisonGrid() {
+            const grid = document.getElementById('comparisonGrid');
+            grid.innerHTML = '';
+
+            allCombinations.forEach((combo, index) => {
+                const div = document.createElement('div');
+                div.className = 'combination-result';
+                div.innerHTML = `
+                    <div class="combination-header ${getCombinationClass(combo)}">
+                        ${formatCombinationName(combo)}
+                    </div>
+                    <div class="combination-response" id="response-${index}">
+                        Select a patient and enter a question to test this combination
+                    </div>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        // Test all combinations
+        async function testAllCombinations() {
+            const patientId = document.getElementById('patientSelect').value;
+            const message = document.getElementById('testMessage').value.trim();
+            
+            console.log('Testing with:', {patientId, message, currentPatients}); // Debug log
+            
+            if (!patientId) {
+                alert('Please select a patient first');
+                return;
+            }
+            
+            if (!message) {
+                alert('Please enter a test message');
+                return;
+            }
+
+            // Show loading state
+            allCombinations.forEach((combo, index) => {
+                const responseDiv = document.getElementById(`response-${index}`);
+                if (responseDiv) {
+                    responseDiv.innerHTML = '<div class="loading">Testing...</div>';
+                }
+            });
+
+            // Test each combination
+            for (let i = 0; i < allCombinations.length; i++) {
+                const combo = allCombinations[i];
+                const responseDiv = document.getElementById(`response-${i}`);
+                
+                if (!responseDiv) {
+                    console.error(`Response div not found for combination ${i}`);
+                    continue;
+                }
+                
+                try {
+                    // Set behavior
+                    const behaviorResponse = await fetch('/behavior', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            cooperation: combo.cooperation,
+                            pain_expression: combo.pain_expression,
+                            talkativeness: combo.talkativeness,
+                            custom_instructions: ''
+                        })
+                    });
+                    
+                    if (!behaviorResponse.ok) {
+                        throw new Error(`Behavior API error: ${behaviorResponse.status}`);
+                    }
+                    
+                    // Send chat message
+                    const chatResponse = await fetch('/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            message: message,
+                            patient_id: patientId
+                        })
+                    });
+                    
+                    if (!chatResponse.ok) {
+                        throw new Error(`Chat API error: ${chatResponse.status}`);
+                    }
+                    
+                    const result = await chatResponse.json();
+                    responseDiv.textContent = result.response || 'No response received';
+                } catch (error) {
+                    console.error(`Error testing combination ${i}:`, error);
+                    responseDiv.innerHTML = `<div style="color: red;">Error: ${error.message}</div>`;
+                }
+                
+                // Add small delay to avoid overwhelming the server
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPatients();
+            initializeComparisonGrid();
+        });
+    </script>
+</body>
+</html>
